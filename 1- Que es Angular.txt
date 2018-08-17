@@ -1,0 +1,35 @@
+¿Qué es angular? 
+Angular es una plataforma que facilita la 
+creación de aplicaciones con la web. Angular combina plantillas declarativas, inyección de dependencia, herramientas de extremo a extremo y mejores prácticas integradas para resolver los desafíos de desarrollo. Angular permite a los desarrolladores 
+crear aplicaciones que se ejecutan en la web, el dispositivo móvil o el escritorio
+
+
+La CLI angular es una interfaz de línea de comandos herramienta que puede crear un proyecto, añadir archivos, y realizar una variedad de tareas de desarrollo en curso, como las pruebas, empaquetamiento y despliegue.
+
+El objetivo de esta guía es construir y ejecutar una aplicación angular sencilla en TypeScript, utilizando la CLI angular y respetando las recomendaciones de la Guía de estilo que benefician a todos los proyectos de Angular.
+
+Al final del capítulo, tendrá una comprensión básica del desarrollo con la CLI y una base para estas muestras de documentación y para las aplicaciones del mundo real.
+
+Y también puedes descargar el ejemplo.
+
+Paso 1. Configurar el  entorno de desarrollo 
+Necesita configurar su entorno de desarrollo antes de poder hacer cualquier cosa.
+
+Instale Node.js® y npm si aún no están en su máquina.
+
+Luego, instale Angular CLI globalmente.
+
+    npm install -g @angular/cli
+
+Paso 2. Crea un nuevo  proyecto 
+Abra una ventana de terminal.
+
+Genere un nuevo proyecto y una aplicación predeterminada ejecutando el siguiente comando:
+ 
+    ng new my-app
+
+
+Paso 3: correr  la aplicación 
+Ve al directorio del proyecto y ejecuta el servidor.
+
+    ng serve
