@@ -1,0 +1,27 @@
+Directiva ngIf es una directiva estructural, 
+ésta directiva nos permite mostrar elementos 
+de HTML de acuerdo a una condición que definamos.
+
+Ejemplo 
+
+En la component.ts:
+personas: any = [
+    {edad: 10, nombre: 'Suri'},
+    {edad: 28, nombre: 'Mónica'},
+    {edad: 18, nombre: 'Jennifer'},
+    {edad: 20, nombre: 'Shirley'},
+    {edad: 1, nombre: 'Bebé'},
+    {edad: 18, nombre: 'Juan'}
+  ];
+
+Y en el component.html:
+<ul>
+    <ng-container *ngFor="let persona of personas">
+        <li *ngIf="persona.edad >= 18">{{persona.nombre}}</li>
+    </ng-container>
+</ul>
+
+
+La directiva  ng-container nos permite usar directivas sin que se 
+muestren en el HTML, puesto que no se pueden usar dos directivas en la 
+misma etiqueta , el ng-container resulta muy util
