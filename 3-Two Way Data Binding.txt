@@ -1,0 +1,17 @@
+Two Way Data Binding engloba a los otros tipos de bindeo, 
+es decir me permite hacer comunicación en dos vías.
+
+para utilizarlo , del lado del template HTML debemos 
+usar  [(ngModel)] igualando la variable con la cual
+hara el bindeo , de esta forma si cambia del lado del 
+componente esta cambiara su valor y viceversa
+
+ejemplo:
+
+    <input type="text" placeholder="Tu nombre" [(ngModel)]="nombre" />
+
+otra configuracion necesaria para que funcione es , ir al 
+app.mudule.ts  y en la seccion de imports colocar
+ FomsModule 
+E importarlo de la siguiente manera
+ import { FormsModule } from '@angular/forms';
