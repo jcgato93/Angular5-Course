@@ -1,0 +1,12 @@
+ngFor es un tap que se utiliza desde el lado
+del html para iterar un vector, array o simplemente 
+una variable que quepa dentro de este ambito 
+la forma de utilizar la directiva es la siguiente 
+
+
+<ul>
+    <li *ngFor="let i of arreglo">{{i.nombre}}</li>
+</ul>
+
+por convencio las directivas estructurales inician con * y con miniscula
+
