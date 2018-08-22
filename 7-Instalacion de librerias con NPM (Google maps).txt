@@ -1,0 +1,66 @@
+Usando la terminal de NPM podemos 
+instalar modulos o directivas que 
+nos ayudaran con ciertas tareas
+en este caso a usar la API de google maps
+
+en este caso se usara https://angular-maps.com/
+para instalarlo con NPM usamos el siguiente comando 
+
+        npm install @agm/core --save
+
+Luego de que instale , se realiza el import de 
+la libreria en el app.module.ts de la siguiente forma 
+
+        import { AgmCoreModule } from '@agm/core';
+
+        @NgModule({
+        imports: [
+            BrowserModule,
+            CommonModule,
+            FormsModule,
+            AgmCoreModule.forRoot({
+            apiKey: 'YOUR_KEY'
+            })
+        ],
+        providers: [],
+        declarations: [ AppComponent ],
+        bootstrap: [ AppComponent ]
+        })
+        export class AppModule {}
+
+
+
+Luego en el app.component.ts
+
+        import { Component } from '@angular/core';
+
+        @Component({
+        selector: 'app-root',
+        templateUrl: 'app.component.html',
+        styleUrls: ['app.component.css'],
+        })
+        export class AppComponent {
+        title: string = 'My first AGM project';
+        lat: number = 51.678418;
+        lng: number = 7.809007;
+        }
+
+
+
+y en el src/app/app.component.html
+
+
+        <h1>{{ title }}</h1>
+
+        <!-- this creates a google map on the page with the given lat/lng from -->
+        <!-- the component as the initial center of the map: -->
+        <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+
+
+para darle un style  src/app/app.component.css 
+
+         agm-map {
+            height: 300px;
+            }   
