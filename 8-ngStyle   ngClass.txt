@@ -1,0 +1,17 @@
+ngStyle -> aplica un estilo definido dependiendo de una expresión.
+ngClass -> aplica una clase css dependiendo de una expresión.
+
+
+[ngStyle]="{ color : (1 == 1) ? 'blue' : 'red' }"
+
+
+
+[ngClass]=“{numero_par: (i+1)%2 !==0}
+
+
+
+
+.numeroPar{
+    background-color:cornflowerblue;
+    color: white;
+}
