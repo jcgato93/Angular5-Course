@@ -1,0 +1,38 @@
+NgSwitch anula las vistas anidadas cuando su valor de expresión de coincidencia coincide con el valor de la expresión de cambio.
+
+En otras palabras:
+
+usted define un elemento contenedor (donde coloca la directiva con una expresión de cambio en el atributo)[ngSwitch]="..."
+usted define vistas internas dentro de NgSwitchy coloca un atributo en los elementos raíz de vista.*ngSwitchCase
+Los elementos dentro NgSwitchpero fuera de a NgSwitchCaseo las NgSwitchDefaultdirectivas se conservarán en la ubicación.
+
+La ngSwitchCasedirectiva informa al padre NgSwitchde qué vista mostrar cuando se evalúa la expresión. Cuando no se
+encuentra una expresión coincidente en una ngSwitchCasevista, la ngSwitchDefaultvista se omite.
+
+<container-element [ngSwitch]="switch_expression">
+  <some-element *ngSwitchCase="match_expression_1">...</some-element>
+  <some-element *ngSwitchCase="match_expression_2">...</some-element>
+  <some-other-element *ngSwitchCase="match_expression_3">...</some-other-element>
+  <ng-container *ngSwitchCase="match_expression_3">
+    <!-- use a ng-container to group multiple root nodes -->
+    <inner-element></inner-element>
+    <inner-other-element></inner-other-element>
+  </ng-container>
+  <some-element *ngSwitchDefault>...</some-element>
+</container-element>
+
+
+
+
+<ng-container *ngFor="let lugar of lugares; let i = index"  [ngSwitch]="lugar.cercania">
+
+        <li [ngStyle]="{'color': (lugar.active)? 'black': 'gray'}"
+        [ngClass]="{'numero_par': (i+1)%2 == 0}">
+        {{lugar.nombre}}
+        
+        <span *ngSwitchCase="1" [ngStyle]="{'color': green}">Muy cercano</span> 
+        <span *ngSwitchCase="2" [ngStyle]="{'color': gray}">Cercano</span>
+        <span *ngSwitchCase="3" [ngStyle]="{'color': red}">Lejano</span>
+        <span *ngSwitchDefault >undefine</span>
+        </li>
+</ng-container>

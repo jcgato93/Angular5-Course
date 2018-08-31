@@ -5,3 +5,20 @@
         <agm-map [latitude]="lat" [longitude]="lng">
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
+
+<ng-container *ngFor="let lugar of lugares">
+        <li *ngIf="lugar.active" >{{lugar.nombre}}</li>
+</ng-container>        
+
+<ng-container *ngFor="let lugar of lugares; let i = index"  [ngSwitch]="lugar.cercania">
+
+        <li [ngStyle]="{'color': (lugar.active)? 'black': 'gray'}"
+        [ngClass]="{'numero_par': (i+1)%2 == 0}">
+        {{lugar.nombre}}
+        
+        <span *ngSwitchCase="1" [ngStyle]="{'color': green}">Muy cercano</span> 
+        <span *ngSwitchCase="2" [ngStyle]="{'color': gray}">Cercano</span>
+        <span *ngSwitchCase="3" [ngStyle]="{'color': red}">Lejano</span>
+        <span *ngSwitchDefault >undefine</span>
+        </li>
+</ng-container>
