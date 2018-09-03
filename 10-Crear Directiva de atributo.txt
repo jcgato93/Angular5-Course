@@ -1,0 +1,61 @@
+las directivas son aquellas como 
+ngIf , ngwitch, ngFor ... etc 
+
+
+una forma de crearlas es simplemente creando un archivo 
+.ts  que por convencion el nombre se escribe de la siguiente 
+manera
+    nombredirectiva.directive.ts
+
+o con el comando  de angular CLI
+    ng g directive resaltar
+
+
+basicamente la directiva debe tener lo siguiente 
+
+        import { Directive, OnInit } from '@angular/core';
+
+        @Directive({
+        selector: '[resaltar]' //resaltar es la forma en que se invocara la directiva desde el html
+        })
+
+
+
+otra de las cosas que normalmente se utilizan es la manipulacion del
+HTML haciendo referencia a este desde typescript, para ello necesitamos lo siguiente
+
+    constructor(private elRef: ElementRef,
+              private renderer: Renderer2) { }
+
+en este caso utilizamos ElementRef para hacer referencia a los elementos de HTML 
+y el Renderer2 para renderizar los resultados esta mas que todo se utiliza para el manejo
+de styles css
+
+
+
+para tomar el valor de entrada de la directiva se utiliza el decorador @Input
+creardo una variable con el mismo nombre del selector para que este lo asocie
+
+            @Input('resaltar') plan : string = '' ;
+
+            ngOnInit(): void {
+                if (this.plan === 'pagado') {
+                this.renderer.setStyle(this.elRef.nativeElement,'background-color','yellow');
+                this.renderer.setStyle(this.elRef.nativeElement,'font-weight','bold');
+                }
+            }
+
+
+finalmente se registra la directiva en app.module.ts 
+en declarations
+
+        @NgModule({
+            declarations: [
+                AppComponent,    
+                ResaltarDirective
+            ],
+        
+
+para el uso en el HTML  seria simplemente
+
+    [resaltar]="lugar.plan"
