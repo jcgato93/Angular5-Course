@@ -1,0 +1,38 @@
+Los host listeners nos ayudan a escuchar los eventos 
+de manera muy sencilla, tiene tres parámetros, 
+el evento, el objetivo del evento y el código a ejecutar 
+cuando se ejecute el evento.
+
+Esto es muy utilizado par analitycs
+
+
+como ejemplo podemos crear una directiva que este a la 
+escucha de la cantidad de click de un anchore 
+
+
+en TypeScript:
+
+import { Directive, HostListener } from '@angular/core';
+
+@Directive({
+  selector: 'a[contar-clicks]' //el 'a' indica que solo se usara un anchore 
+})
+export class ContarClicksDirective {
+
+  clickN = 0;
+
+  @HostListener('click',['$event.target']) onClick(btn){
+    console.log('a',btn,"Número de Clicks:", this.clickN++);
+  }
+
+  constructor() { }
+
+}
+
+
+
+
+
+en el html 
+<a contar-clicks></a>   //en este caso apesar de ser una directiva , no lleva [] por que no recibe ningun parametro
+
