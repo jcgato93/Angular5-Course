@@ -1,0 +1,17 @@
+Host Binding nos permite editar elementos del 
+DOM o el HTML al que esté asignado desde nuestra 
+directiva. Recibe el atributo del HTML que queremos resaltar.
+
+
+En este caso queremos cambiar la opacity del elemento cada ves
+que se ejecute el @HostListener y tenga implementada la directiva
+
+
+    clickN = 0;
+    @HostBinding('style.opacity') opacity: number = .1;
+    //el parametro del @HostBinding es la propiedad a cambiar , y opacity es simplemente el nombre de la variable
+
+  @HostListener('click',['$event.target']) onClick(btn){
+    console.log('a',btn,"Número de Clicks:", this.clickN++);
+    this.opacity += .1;
+  }
