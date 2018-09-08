@@ -9,7 +9,6 @@
      
 
 <ng-container *ngFor="let lugar of lugares; let i = index"  [ngSwitch]="lugar.cercania">
-
         <li contar-clicks [ngStyle]="{'color': (lugar.active)? 'black': 'gray'}" [ngClass]="{'numero_par': (i+1)%2 == 0}" [resaltar]="lugar.plan">
                 {{lugar.nombre}}
 
@@ -20,3 +19,15 @@
         </li>
 
 </ng-container>
+
+<div class="container">
+<ul class="list-group">
+        <ng-container *ngFor="let lugar of lugares; let i = index">
+                <li class="list-group-item" *ngIf="lugar.active">
+                        {{lugar.nombre}}
+                </li>
+
+        </ng-container>
+
+</ul>
+</div>

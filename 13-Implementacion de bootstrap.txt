@@ -1,0 +1,22 @@
+Por defecto , Angular unicamente trabaja con los stylos 
+por defecto del navegador , si quisieramos implementar 
+algun framework como bootstrap o angular material, 
+primero debemos instalarlo 
+
+para ello utilizamos el npm
+
+    npm install bootstrap  //este instala la ultima version
+
+
+Luego en angular.json en styles añadimos la ruta del bootstrap
+
+
+ "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+
+
+En caso que este corriendo el server , se debe reiniciar
+
+y Listo!  a usar bootstrap
