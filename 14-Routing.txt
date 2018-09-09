@@ -1,0 +1,53 @@
+Para la navegacion en la apliacion 
+utilizamos el Routing , este nos permite cambiar
+la vista entre los diferentes componentes
+
+primero debemos agregar un modulo
+para el control de las rutas 
+
+
+1- Crear componentes
+
+    ng generate module app-routing --flat --module=app
+
+--flatcoloca el archivo en src/applugar de su propia carpeta. 
+--module=app le dice a angular CLI que lo registre en la imports matriz de AppModule.
+
+Esta sera la ruta del archivo generado
+ src / app / app-routing.module.ts (generado)
+
+ De esta forma se tendra un mejor control de las rutas en un solo modulo
+
+
+2- Las turas le dicen al enturador  que vista mostrar cuando un usuario  hace click en un enlace
+o pega una URL en la barra de direcciones del navegador
+
+Ana ruta tipica de angular tiene dos propiedades:
+    -path : una cadena que coincide con la URL en la barra de direcciones del navegador
+    -component: el componente que debe crear el enrutador cuando navega por esa ruta. 
+
+por lo que dentro del app-routing crearmos una constante con las rutas 
+
+
+3-RouterModule.forRoot()
+
+    Primero se debe inicializar el enrutador y comenzar
+    a escuchar los cambios de ubicacion del navegador
+
+    Agregar RouterModula a la matriz de los imports de app-routing y configurar 
+    de la siguiente manera 
+
+    imports: [ RouterModule.forRoot(routes) ]
+
+    Se llama al método forRoot()porque configura el 
+    enrutador en el nivel raíz de la aplicación. 
+    El forRoot() método suministra los proveedores 
+    de servicios y las directivas necesarias para 
+    el enrutamiento y realiza la navegación inicial 
+    en función de la URL del navegador actual.
+
+4- Añadir RouterOutlet
+    el RouterOutlet es la etiqueta donde se renderizaran
+    las paginas en las que se valla navegando
+
+    <router-outlet></router-outlet>

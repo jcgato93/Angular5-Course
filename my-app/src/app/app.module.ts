@@ -6,19 +6,24 @@ import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { ResaltarDirective } from './directives/resaltar.directive';
 import { ContarClicksDirective } from './directives/contar-clicks.directive';
+import { AppRoutingModule } from './/app-routing.module';
+import { DetalleComponent } from './detalle/detalle.component';
+import { LugaresComponent } from './lugares/lugares.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
     ResaltarDirective, 
-    ContarClicksDirective
+    ContarClicksDirective, 
+    DetalleComponent, LugaresComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'My key'
-    })
+    }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
