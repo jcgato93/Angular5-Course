@@ -5,7 +5,7 @@ import { DetalleComponent } from './detalle/detalle.component';
 import { LugaresComponent } from './lugares/lugares.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', component: LugaresComponent },
   { path: 'detalle', component: DetalleComponent },
   { path: 'lugares', component: LugaresComponent }
 ];

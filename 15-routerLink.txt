@@ -1,0 +1,18 @@
+En las aplicaciones SPA como angular 
+debemos evitar la redireccion con un link
+ya que la carga es mucho mas lenta , y esto 
+es algo que intenta solucionar este tipo de frameworks
+
+para ello , en angular utilizamos el roterLink
+en la etiqueta html de la siguiente manera
+
+    [routerLink]="['/ruta']"
+
+
+otra de las funcionalidades que nos ofrecer las directivas de 
+router , es routerLinkActive , este nos permite implementar una clase
+cuando se esta en un componente especifico , como por ejemplo resaltar 
+el la pestaña que indica el componente 
+
+
+    routerLinkActive="clase-css"
