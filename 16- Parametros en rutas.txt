@@ -1,0 +1,50 @@
+Para pasar parametros en las rutas de navegacion
+o peticion de componentes , de deben primero establecer 
+en el routing del componente 
+
+ejemplo:
+   { path: 'detalle/:id', component: DetalleComponent }
+
+:id  indica el nombre del parametro que se le pasara 
+
+
+y para utilizarlo en routerLink existen dos opciones
+
+ 1. routerLink="/detalle/{{lugar.id}}"
+
+ 2.[routerLink]="['/detalle/',parametro]"
+
+
+para capturar los parametros que se pasan por la URL 
+debemos utilizar ActivatedRoute, este cuenta con los metodos para 
+acceder a los parametros 
+
+ constructor(private route:ActivatedRoute) {
+      console.log(route.snapshot.params['id']);    
+  }
+
+
+
+  Parametros de tipo Query
+
+  Esta es una forma de pasar una serie de parametros que pueden 
+  ser evaluados por el metodo que las recibe
+
+  ejemplo de URL con params tipo Query 
+
+  /detalle/2?action=edit 
+
+  para utilizarlos en el html seria de la siguiente manera 
+
+  [queryParams]="{action:'edit'}" 
+
+
+  para obtener los datos del lado del componente se hace de la siguiente manera
+  con  
+  route.snapshot.queryParams['id']
+
+  o 
+
+  route.queryParams
+
+  para obtener el objeto con todos los parametros
