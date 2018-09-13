@@ -9,13 +9,14 @@ import { ContarClicksDirective } from './directives/contar-clicks.directive';
 import { AppRoutingModule } from './/app-routing.module';
 import { DetalleComponent } from './detalle/detalle.component';
 import { LugaresComponent } from './lugares/lugares.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
     ResaltarDirective, 
     ContarClicksDirective, 
-    DetalleComponent, LugaresComponent
+    DetalleComponent, LugaresComponent, ContactoComponent
   ],
   imports: [
     BrowserModule,

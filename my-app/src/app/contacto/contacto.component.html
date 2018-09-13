@@ -1,0 +1,39 @@
+<div class="well">
+  <a [routerLink]="['/lugares']">Lugares</a>/ Contacto
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <label for="">Nombre</label>
+      <input type="text" name="" class="form-control" id="">
+
+      <br>
+
+      <label for="">Email</label>
+      <input type="email" name="" class="form-control" id="">
+      <br>
+
+      <label for="">Mensaje</label>
+      <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+
+      <hr>
+      <a class="btn btn-primary">Enviar</a>
+      <a class="btn btn-default">Cancelar</a>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="thumbnail box-shadow" style="width: 20rem;">
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+        <div class="card-body">
+          <p class="card-text">
+            Esta es una descripcion simple del lugar .....
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
