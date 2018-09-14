@@ -12,6 +12,11 @@ import { LugaresComponent } from './lugares/lugares.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { LugaresService } from './services/lugares.service';
 
+//firebase
+import { AngularFireModule } from'angularfire2';
+import { AngularFireDatabaseModule} from'angularfire2/database';
+import { environment} from'../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,    
@@ -25,7 +30,9 @@ import { LugaresService } from './services/lugares.service';
     AgmCoreModule.forRoot({
       apiKey: 'My key'
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
     LugaresService

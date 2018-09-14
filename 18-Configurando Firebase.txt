@@ -1,0 +1,54 @@
+En este caso se usara Firebase 
+como base de datos 
+
+1-para instalarlo en angular 6 
+
+    npm install firebase angularfire2 --save
+
+2-En la carpeta enviroment, en el archivo enviroment.ts en la
+ constante de enviroment, agrega un objeto llamado firebase con las credenciales de firebase:
+
+        
+        export const environment = {
+        production: false,
+
+        firebase: {
+            apiKey: "AIzaSyCYGIPXT_VAaHzSW6E6IFBDguGasdasd",
+            authDomain: "asdsasd.firebaseapp.com",
+            databaseURL: "https://asdasd.firebaseio.com",
+            projectId: "lugaresplatzisquareasdasd",
+            storageBucket: "asdasd.appspot.com",
+            messagingSenderId: "270000072477asdasd"
+        }
+
+        };
+
+
+3-Despues de esto, en el app.module.ts agrega los imports:
+
+    import { AngularFireModule } from'angularfire2';
+    import { AngularFireDatabaseModule} from'angularfire2/database';
+    import { environment} from'../environments/environment';
+
+    Y en el @ngModule, en la parte de imports, agrega o siguiente:
+
+    @NgModule({
+        ...
+        imports: [
+            ...
+            AngularFireDatabaseModule,
+            AngularFireModule.initializeApp(environment.firebase)
+        ],
+        })
+
+4-para terminar , remplazamos los valores que brinda Firebase 
+en el archivo de enviroment        
+
+         firebase: {
+            apiKey: "AIzaSyCYGIPXT_VAaHzSW6E6IFBDguGasdasd",
+            authDomain: "asdsasd.firebaseapp.com",
+            databaseURL: "https://asdasd.firebaseio.com",
+            projectId: "lugaresplatzisquareasdasd",
+            storageBucket: "asdasd.appspot.com",
+            messagingSenderId: "270000072477asdasd"
+        }
