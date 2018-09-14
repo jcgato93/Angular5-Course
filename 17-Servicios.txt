@@ -1,0 +1,44 @@
+-Permiten centralizar funcionalidad
+-Pueden ser usados desde cualquier componente
+-Hacen nuestro app mucho más mantanible
+
+
+Para generar un servicios con Angular CLI 
+utilizamos el siguiente comando
+
+    ng g service [nombre servicio]
+
+el servicio debe ser @Injectable para poder ser inyectado en otros 
+servicios o componentes
+
+
+luego vamos a  app.module.ts 
+y en el array de providers añadimos el servicio 
+
+    providers: [
+      Servicio
+    ],
+
+
+Los metodos que se crean dentro de los servicios deben publicos
+para que puedan ser accedidos luego de que se inyectan en otro componente
+
+        ejemplo:
+
+        -Servicio
+
+           public buscarLugar(id){
+                return this.lugares.filter((lugar) =>  {return lugar.id == id})[0] || null;
+            }   
+
+
+        -Componente que usa el servicio
+
+            constructor(private lugaresServices: LugaresService) {
+
+                this.id = this.route.snapshot.params['id'];
+                
+                this.lugar= lugaresServices.buscarLugar(this.id);
+            }                 
+
+
