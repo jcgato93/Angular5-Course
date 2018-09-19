@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,13 @@ export class LugaresService {
     {id: 5,plan: 'gratuito',cercania: 3, distancia: 35, active: true, nombre: 'Zapateria el clavo'},
   ]
 
-  constructor() { }
+  itemRef: AngularFireObject<any>;
+  item: Observable<any>;
+
+  constructor(private afDB:AngularFireDatabase) {
+    this.itemRef = afDB.object('lugares');
+    this.item = this.itemRef.valueChanges();
+   }
 
   /**
    * getLugares
@@ -26,5 +34,12 @@ export class LugaresService {
     return this.lugares.filter((lugar) =>  {return lugar.id == id})[0] || null;
   }
 
+  /**
+   * guardarLugar
+   */
+  public guardarLugar(lugar) {
+    console.log(lugar);
+    this.itemRef.set(lugar);
+  }
 
 }

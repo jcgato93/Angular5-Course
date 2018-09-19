@@ -1,0 +1,35 @@
+AngularFireDatabasees un servicio que se puede 
+inyectar a través del constructor de su componente
+o @Injectable()servicio angular, por lo que se 
+debe crear un servicio para este 
+
+
+import { Component } de  ' @ angular / core ' ;
+importar { AngularFireDatabase } de  ' @ angular / fire / database ' ;
+importar { Observable } desde  ' rxjs ' ;
+
+@ Componente ({
+  selector: ' aplicación-raíz ' ,
+  templateUrl: ' app.component.html ' ,
+  styleUrls: [ ' app.component.css ' ]
+})
+ export class AppComponent {
+  itemRef: AngularFireObject<any>;
+  item: Observable<any>;
+  constructor(db: AngularFireDatabase) {
+    this.itemRef = db.object('item');
+    this.item = this.itemRef.valueChanges();
+  }
+  save(newName: string) {
+    this.itemRef.set({ name: newName });
+  }
+  update(newSize: string) {
+    this.itemRef.update({ size: newSize });
+  }
+  delete() {
+    this.itemRef.remove();
+  }
+}
+
+
+

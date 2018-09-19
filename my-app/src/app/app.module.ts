@@ -16,13 +16,14 @@ import { LugaresService } from './services/lugares.service';
 import { AngularFireModule } from'angularfire2';
 import { AngularFireDatabaseModule} from'angularfire2/database';
 import { environment} from'../environments/environment';
+import { CrearComponent } from './crear/crear.component';
 
 @NgModule({
   declarations: [
     AppComponent,    
     ResaltarDirective, 
     ContarClicksDirective, 
-    DetalleComponent, LugaresComponent, ContactoComponent
+    DetalleComponent, LugaresComponent, ContactoComponent, CrearComponent
   ],
   imports: [
     BrowserModule,
