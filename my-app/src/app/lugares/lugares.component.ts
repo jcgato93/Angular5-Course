@@ -18,7 +18,10 @@ export class LugaresComponent implements OnInit {
   lugares = null;
 
   constructor(private lugaresService: LugaresService){
-      this.lugares = lugaresService.getLugares();
+      lugaresService.getLugares()
+          .subscribe(lugares =>{            
+            this.lugares = lugares ;
+          })
   }
 
 }

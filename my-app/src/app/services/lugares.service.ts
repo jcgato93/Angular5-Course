@@ -27,7 +27,7 @@ export class LugaresService {
    * getLugares
    */
   public getLugares() {
-    return this.lugares;
+    return this.afDB.list('lugares/').valueChanges();
   }
 
   public buscarLugar(id){
@@ -39,7 +39,8 @@ export class LugaresService {
    */
   public guardarLugar(lugar) {
     console.log(lugar);
-    this.itemRef.set(lugar);
+    lugar.id= Date.now();
+    this.afDB.database.ref(`lugares/${Date.now()}`).set(lugar);
   }
 
 }

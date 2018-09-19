@@ -26,7 +26,7 @@
                 </div>
   <ul class="list-group">
           <ng-container *ngFor="let lugar of lugares; let i = index">
-                  <li  [routerLink]="['/detalle/',lugar.id]" [queryParams]="{action:'edit'}"  routerLinkActive="router-link-active"   class="list-group-item" *ngIf="lugar.active">
+                  <li  [routerLink]="['/detalle/',lugar.id]" [queryParams]="{action:'edit'}"  class="list-group-item" >
                           {{lugar.nombre}}
                   </li>
   
