@@ -17,6 +17,7 @@ import { AngularFireModule } from'angularfire2';
 import { AngularFireDatabaseModule} from'angularfire2/database';
 import { environment} from'../environments/environment';
 import { CrearComponent } from './crear/crear.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CrearComponent } from './crear/crear.component';
     }),
     AppRoutingModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    HttpClientModule
   ],
   providers: [
     LugaresService
