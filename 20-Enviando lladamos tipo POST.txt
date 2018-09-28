@@ -1,0 +1,15 @@
+para enviar peticiones http post
+
+1. instanciamos en el constructor del servicio 
+ el HttpClient
+
+2. instanciar una const con los Headers 
+
+    import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+    const header = new HttpHeaders({"Content-Type":"application/json"});
+
+3. Usamos el http.post que recibe por parametro 
+    url, body, header
+
+    return this.http.post(url,jsonBody,{headers:header});

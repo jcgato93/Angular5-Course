@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,7 @@ export class LugaresService {
    */
   public getLugares() {
     return this.afDB.list('lugares/').valueChanges();
+
   }
 
   public buscarLugar(id){
@@ -44,7 +45,9 @@ export class LugaresService {
   public guardarLugar(lugar) {
     console.log(lugar);
     lugar.id= Date.now();
-    this.afDB.database.ref(`lugares/${Date.now()}`).set(lugar);
+    //this.afDB.database.ref(`lugares/${Date.now()}`).set(lugar);
+    const header = new HttpHeaders({"Content-Type":"application/json"});
+    return this.http.post(this.API_ENDPOINT+'/lugares.json',lugar,{headers:header});
   }
 
 
