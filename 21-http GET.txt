@@ -1,0 +1,10 @@
+para enviar peticiones http get
+
+1. instanciamos en el constructor del servicio 
+ el HttpClient
+
+
+3. Usamos el http.get que recibe por parametro 
+    url
+
+    return this.http.post(url);

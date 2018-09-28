@@ -31,8 +31,8 @@ export class LugaresService {
    * getLugares
    */
   public getLugares() {
-    return this.afDB.list('lugares/').valueChanges();
-
+    //return this.afDB.list('lugares/').valueChanges();   
+    return this.http.get(this.API_ENDPOINT+'/lugares.json');
   }
 
   public buscarLugar(id){
