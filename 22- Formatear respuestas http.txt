@@ -1,0 +1,22 @@
+Algunas de las formas 
+de parcear o castear una respuesta http 
+son la especificacion del tipo de objeto que se espera como resultado
+o utilizando el operador map() del rxjs/operators
+
+
+la primera forma seria de la siguiente manera 
+
+    getHeroes (): Observable<Hero[]> {
+        return this.http.get<Hero[]>(this.heroesUrl)
+    }
+
+en este se especifica que el llamado http.get retornara un <Hero[]> 
+
+
+y la segunda forma de hacerlo seria con el 
+
+     getHeroes (): Observable<Hero[]> {
+        .pipe(map((resultado,index) => {
+       return resultado['heroes'];
+    }
+    

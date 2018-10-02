@@ -3,6 +3,8 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,7 +34,10 @@ export class LugaresService {
    */
   public getLugares() {
     //return this.afDB.list('lugares/').valueChanges();   
-    return this.http.get(this.API_ENDPOINT+'/lugares.json');
+    return this.http.get(this.API_ENDPOINT+'/lugares.json')
+    .pipe(map((resultado,index) => {
+      return resultado['lugares'];
+  }))
   }
 
   public buscarLugar(id){
