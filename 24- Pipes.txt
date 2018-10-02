@@ -1,0 +1,83 @@
+Cada aplicación comienza con lo que parece una tarea simple: obtener datos, transformarlos y mostrarlos a 
+los usuarios. Obtener datos podría ser tan simple como crear una variable local o tan compleja como 
+transmitir datos a través de un WebSocket.
+
+Una vez que llegan los datos, puede enviar sus toStringvalores brutos directamente a la vista, pero eso rara vez 
+contribuye a una buena experiencia de usuario. Por ejemplo, 
+en la mayoría de los casos de uso, los usuarios prefieren ver 
+una fecha en un formato simple como 15 de abril de 1988 en lugar del formato de cadena sin formato 
+Viernes 15 de abril de 1988 00:00:00 GMT-0700 (Hora de verano del Pacífico).
+
+Claramente, algunos valores se benefician de un poco de edición. Puede notar 
+que desea muchas de las mismas transformaciones repetidamente, 
+tanto dentro como a través de muchas aplicaciones. 
+Casi puedes pensar en ellos como estilos. De hecho, 
+es posible que desee aplicarlos en sus plantillas HTML al igual que los estilos.
+
+para este tipo de cosas es para las que existen los Pipes en Angular
+
+
+
+Uso :
+    Una tubería toma datos como entrada y los transforma en una salida deseada. En esta página, 
+    usará pipes para transformar la propiedad de cumpleaños de un componente en una fecha amigable para las personas.
+
+
+    import { Component } from '@angular/core';
+
+    @Component({
+    selector: 'app-hero-birthday',
+    template: `<p>The hero's birthday is {{ birthday | date }}</p>`
+    })
+    export class HeroBirthdayComponent {
+    birthday = new Date(1988, 3, 15); // April 15, 1988
+    }
+
+
+
+Céntrese en la plantilla del componente.
+
+    <p>The hero's birthday is {{ birthday | date }}</p>
+
+    Dentro de la expresión de interpolación, fluye el birthda y valor del componente a través del operador de Pipe (|) 
+    a la función del Pipe de fecha a la derecha. Todas los Pipes funcionan de esta manera.
+
+
+
+Formatear un Pipe de forma explicita , esta es la forma de pasar parametros a los Pipes
+
+    <p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
+
+
+
+
+
+
+Como Crear Pipies ? 
+
+una forma sencilla de crear un pipe es con el siguiente comando de Angular CLI
+
+    ng generate pipe [name]
+
+
+la siguiente seria la estructura basica de un Pipe
+
+
+            import { Pipe, PipeTransform } from '@angular/core';
+
+            @Pipe({
+            name: 'linkifystrng' //nombre del pipi con el que sera invocado
+            })
+            export class LinkifystrngPipe implements PipeTransform {
+
+            transform(value: any): any {
+                return value;
+            }
+
+            }
+
+
+
+
+
+

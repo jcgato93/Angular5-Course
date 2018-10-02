@@ -18,13 +18,14 @@ import { AngularFireDatabaseModule} from'angularfire2/database';
 import { environment} from'../environments/environment';
 import { CrearComponent } from './crear/crear.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LinkifystrngPipe } from './linkifystrng.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,    
     ResaltarDirective, 
     ContarClicksDirective, 
-    DetalleComponent, LugaresComponent, ContactoComponent, CrearComponent
+    DetalleComponent, LugaresComponent, ContactoComponent, CrearComponent, LinkifystrngPipe
   ],
   imports: [
     BrowserModule,
