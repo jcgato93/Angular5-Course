@@ -1,0 +1,17 @@
+en este caso es algo muy sencillo
+en el suscribe del componente que llama el servicio
+el segundo parametro es si se presenta algun error
+podemos capturarlo y usarlo en alguna funcion o algo por 
+el estilo
+
+
+ LugaresService.getLugares()
+			.subscribe((lugares)=>{
+				this.lugares = lugares
+				var me = this
+				me.lugares = Object.keys(me.lugares).map(function(key){
+					return me.lugares[key]
+				});
+			}, error => {
+				this.isError = error.statusText
+			})

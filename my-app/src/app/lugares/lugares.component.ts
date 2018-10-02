@@ -22,6 +22,8 @@ export class LugaresComponent implements OnInit {
           .subscribe(lugares =>{            
             this.lugares =Object.values(lugares);
             debugger;
+          },error =>{
+            console.log(error)
           })
   }
 
