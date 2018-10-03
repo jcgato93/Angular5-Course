@@ -1,0 +1,48 @@
+Angular CLI descarga e instala  todo lo necesario para probar una aplicacion 
+de Angular con el framework test Jasmine
+
+El projecto que crees con CLI inmediatamente ya contara con un test,
+con tan solo un comando del CLI se puede correr
+
+    ng test
+
+el comando ng test construye la aplicacion en mode de vigilanci e inicia el  "Karma test runner".
+
+Los app.component.ts y los app.component.spec.ts archivos son hermanos en la misma carpeta. 
+Los nombres de los archivos raíz ( app.component) son los mismos para ambos archivos.
+
+Adopte estas dos convenciones en sus propios proyectos para cada tipo de archivo de prueba.
+
+
+
+Angular TestBed
+
+El TestBedes el más importante de las utilidades de prueba Angular. El TestBed crea un angular construida dinámicamente prueba de módulo que emula un angular @NgModule .
+
+El TestBed.configureTestingModule() método toma un objeto de metadatos que puede tener la mayoría de las propiedades de un @NgModule .
+
+Para probar un servicio, establezca la providerspropiedad de metadatos con una matriz de los servicios que probará o simulará.
+
+
+        let service: ValueService;
+
+        beforeEach(() => {
+        TestBed.configureTestingModule({ providers: [ValueService] });
+        });
+
+
+
+Como provar los services ?
+
+
+    it('should have the same places as the service', ()=>{
+        let fixture = TestBed.createComponent(PlaceComponent);
+        let app = fisture.debugElement.componentInstance;
+        let placeService = fixture.debugElement.injector.get(nameService);
+        expet(objectExpectec).toEqual(nameService.method);
+    })
+
+
+
+
+
