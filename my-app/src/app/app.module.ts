@@ -21,6 +21,8 @@ import { environment} from'../environments/environment';
 import { CrearComponent } from './crear/crear.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LinkifystrngPipe } from './pipes/linkifystrng.pipe';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { LinkifystrngPipe } from './pipes/linkifystrng.pipe';
     LugaresComponent, 
     ContactoComponent, 
     CrearComponent, 
-    LinkifystrngPipe
+    LinkifystrngPipe, LoginComponent, RegistroComponent
   ],
   imports: [
     BrowserModule,
