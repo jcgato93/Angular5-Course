@@ -1,0 +1,145 @@
+
+1- importar BrowserAnimationsModule,
+   el cual introduce las capacidades de animacion 
+   dentro del root la la aplicacion de Angular.
+
+            import { NgModule } from '@angular/core';
+            import { BrowserModule } from '@angular/platform-browser';
+            import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+            @NgModule({
+            imports: [
+                BrowserModule,
+                BrowserAnimationsModule
+            ],
+            declarations: [ ],
+            bootstrap: [ ]
+            })
+            export class AppModule { }
+
+
+2- Importanto las funciones de animacion dentro de una archivo .component
+
+        import { Component, HostBinding } from '@angular/core';
+        import {
+        trigger,
+        state,
+        style,
+        animate,
+        transition,
+        // ...
+        } from '@angular/animations';
+
+3- Agregar las propiedades de matadatos dentro del componente
+
+        @Component({
+        selector: 'app-root',
+        templateUrl: 'app.component.html',
+        styleUrls: ['app.component.css'],
+        animations: [
+            // animation triggers go here
+        ]
+        })
+
+
+4- Definimos las clases del CSS que se usaran para las animaciones
+
+    example 
+
+    .cuadrado{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+
+
+5- definir los triggers dentro del .component
+
+    animations: [
+    trigger('nameTrigger',
+    [
+      state('nameState',style({
+        opacity: 0,
+        backgroundColor: 'green',
+        transform: 'rotate3d(0,0,0,0deg)'
+      })),
+      state('nameStateFinal',style({
+        opacity: 1,
+        backgroundColor: 'yellow',
+        transform: 'rotate3d(5,10,30,0deg)'
+      }))
+
+    ])
+  ]
+
+
+6- definir una variable de estado dentro del .component.ts
+
+    state = 'nameState';
+
+    y en el html dentro del objeto que queremos animar 
+    utilimazos el decorador @ junto con el nombre del trigger
+    entre llaves y este se iguala a la variable de estado
+
+        <div [@nameTriger] = 'state' ></div>
+
+7- Agregar transicion para denifinir entre que estados cambiara
+
+            transition('nameState => nameStateFinal', animate(1000)),
+            transition('nameStateFinal => nameState', animate(500))
+
+
+
+8- crear funcion que cambiara el estado de la variable que se esta 
+   evaluando para la animacion
+
+     //Example of animations
+        state = 'nameState';
+
+        animar(){
+            this.state = (this.state === 'nameState') ? 'nameStateFinal' : 'nameState';
+        }
+
+
+
+9- Callbacks 
+
+    Son funciones que se ejecutan cuando inician o finaliza una animacion
+
+    en el HTML dentro de la etiqueta donde se ejecuta la animacion 
+
+    *Cuando inicia la animacion 
+
+    <div (@nameTrigger.start)="funcionQueSeEjecuta($event)"></div>
+
+
+    *Cuando finaliza la animacion
+
+    <div (@nameTrigger.done)="funcionQueSeEjecuta($event)"></div>
+
+
+
+
+Nota: una forma correcta de crear animations 
+es en un .ts por separado de la siguiente manera
+
+ export const animationX=
+        trigger('routeAnimations',
+        [
+            ........
+        ]
+        )
+
+
+
+y este puede ser importado dentro del componente que lo requiera 
+
+            @Component({
+            selector: 'app-root',
+            templateUrl: 'app.component.html',
+            styleUrls: ['app.component.css'],
+            animations: [
+                slideInAnimation
+                // animation triggers go here
+            ]
+            })
