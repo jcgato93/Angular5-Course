@@ -46,6 +46,7 @@ export class AuthorizationService {
 
   /**
    * isLogged
+   * Verifica si el usuario esta loggeado
    */
   public isLogged() {
     return this.angularFireAuth.authState;    
