@@ -17,7 +17,7 @@ Property Binding [] TypeScript <= HTML: Información del lado de
 HTML que puede ser por ejemplo, información que el usuario ingrese o que nosotros pongamos 
 un valor por defecto. Viajando la información de HTML a TypeScript.
 
-Event Binding [] TypeScript <= HTML: Escuchar 
+Event Binding () TypeScript <= HTML: Escuchar 
 eventos desde HTML y pasarlo a TypeScript.
 
 Two Way Data Binding [()] TypeScript <=> HTML: Comunicación de
