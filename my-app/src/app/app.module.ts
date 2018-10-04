@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LinkifystrngPipe } from './pipes/linkifystrng.pipe';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
+import { AuthorizationService } from './services/authorization.service';
+import { AuthorizationGuardService } from './guards/authorization-guard.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { RegistroComponent } from './registro/registro.component';
     HttpClientModule
   ],
   providers: [
-    LugaresService
+    LugaresService,
+    AuthorizationService,
+    AuthorizationGuardService
   ],
   bootstrap: [AppComponent]
 })

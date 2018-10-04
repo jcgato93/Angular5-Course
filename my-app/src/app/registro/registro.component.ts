@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthorizationService } from '../services/authorization.service';
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  registro:any = {
+
+  }
+
+  constructor(private autorizacionService : AuthorizationService) { }
 
   ngOnInit() {
   }
+
+
+  registrar(){
+    this.autorizacionService.registro(this.registro.email,this.registro.password);
+  }
+
 
 }

@@ -1,6 +1,192 @@
 Una forma efectiva de resguardar nuestra aplicacion
 es utilizando JWT (Json Web Tokens)
 
-En Angular funciona de la siguiente manera
+para este ejercio se relizara utilizando la 
+autenticacion con Firebase
 
+1- Crear el servicio de autenticacion
+
+    ng g service services/authorization
+
+
+2- importar el modulo de AngularFireAuthModule
+
+    import { AngularFireAuthModule } from'angularfire2/auth';
+
+3-  Crear metodo de Registro
+
+          public registro(email,password) {
+            this.angularFireAuth.auth.createUserWithEmailAndPassword(email,password)
+            .then((response)=>{
+                alert('Usuario Registrado con éxito');
+                console.log(response)
+            })
+            .catch((error)=>{
+                alert('Ocurrio un error!')
+                console.log(error);
+            })
+        }
+
+
+4- Configuracion en la consola de Firebase
+
+    Vamos a la consola de firebase dentro del proyecto correspondiente
+    y habilitamos la autenticacion por email y password 
+
+    en la opcion de Authentication / Metodo de acceso 
+
+    y en Proveedores de accedo en la opcion de Correo/Contraseña
+
+
+
+5- Configuracion de authorization en la base de datos para 
+    cambiar las reglas de lectura y escritura para que sea 
+    obligatorio estar loggeado previamente 
+
+    en Datable / Reglas 
+
+        {   
+        "rules": {
+            ".read": "auth !== null",
+            ".write": "auth !== null"
+            }
+        }
+
+6- Crear el metodo de login en el servicio
+
+      public login(email:any,password:any) {
+        this.angularFireAuth.auth.signInWithEmailAndPassword(email,password)
+        .then((response)=>{
+        alert('Usuario loggeado');
+        console.log(response)
+        })
+        .catch((error)=>{
+        alert('Ocurrio un error!')
+        console.log(error);
+        })
+    }
  
+
+ 7- Verificacion de Loggin
+    utilizando las funciones de autenticacion para 
+    proteger las vistas o las funciones de lectura y escritura
+    Una forma sencilla de hacerlo es la siguiente
+
+    se crear el metodo de verificacion del estado del login en el servicio
+
+
+    public isLogged() {
+        return this.angularFireAuth.authState;    
+    }
+
+    este puede retornar un suscribe que puede ser manejado de la siguiente manera
+
+    this.autorizacionService.isLogged()
+    .subscribe((result)=>{
+      if (result && result.uid) {
+        this.logeedIn = true;
+      }
+      else{
+        this.logeedIn = false;
+      }
+    },
+    (error)=>{
+      this.logeedIn = false;
+    })
+
+
+8- Proteccion de Rutas 
+    para esto primero podemos crear una carpeta Guard , donde estaran 
+    todos los archivos de logica de los guards , estos en sí son services
+
+    ng g service guards/authorizationGuard
+
+
+     y dentro de este archivos
+
+     import { Component } from '@angular/core';
+        import { AuthorizationService } from './services/authorization.service';
+
+        @Component({
+        selector: 'app-root',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.css']
+        })
+        export class AppComponent {
+        logeedIn = false;
+
+        constructor(private autorizacionService : AuthorizationService){
+            this.autorizacionService.isLogged()
+            .subscribe((result)=>{
+            if (result && result.uid) {
+                this.logeedIn = true;
+            }
+            else{
+                this.logeedIn = false;
+            }
+            },
+            (error)=>{
+            this.logeedIn = false;
+            })
+        }
+        }
+
+
+9- Agregar al servicio en el app.module.ts 
+   dentro de provideers
+
+10- en el archivo de Routing agregamos el guard en cada ruta que
+    deseemos que se evalue la autenticaicon
+
+        { path: 'crear', component: CrearComponent , canActivate:[AuthorizationGuardService]},
+
+
+
+Autenticacion con redes sociales
+
+1- Importar todos los servicios de firebase en el servicio de autenticacion
+
+    import * as firebase from 'firebase/app';
+
+
+2- Creamos el metodo de autenticacion con facebook
+
+    public facebookLogin() {
+    this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then((result)=>{
+        console.log(result)
+        alert('User login with facebook')
+      })
+      .catch((error)=>{
+        console.log(error);
+      });
+  }
+
+
+3- Luego en el componente que usara el metodo del servicio 
+
+    facebookLogin(){
+        this.autorizacionService.facebookLogin();
+    }
+
+
+4- creamos el boton que utilice el metodo en el html 
+    
+    <button type="button"class="btn btn-primary btn-block" (click)="facebookLogin()" >Login with Facebook</button>
+
+5- Habilitamos la opcion en firebase de autenticacion con facebook
+
+    Authentication/  Metodo de acceso 
+
+    en esta habilitamos la opcion de Facebook (Ten en cuenta que para esto debes tener las credenciales de la App de facebook)
+
+
+Logout
+
+1- Crear el metodo en el servicio
+
+      public logout() {
+            this.angularFireAuth.auth.signOut();
+        }
+
+2- Utilizar el metodo del servicio en el componente
