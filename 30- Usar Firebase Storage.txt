@@ -1,0 +1,70 @@
+utilizando angularfire2
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
+  ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule {}
+
+
+
+2- Inject into the service
+
+    import { Component } from '@angular/core';
+    import { AngularFireStorage } from '@angular/fire/storage';
+
+    @Component({
+    selector: 'app-component',
+    template: ``
+    })
+    export class AppComponent {
+    constructor(private storage: AngularFireStorage) { }
+    }
+
+
+3- upload files with upload
+
+    import { Component } from '@angular/core';
+    import { AngularFireStorage } from '@angular/fire/storage';
+
+    @Component({
+    selector: 'app-root',
+    template: `
+    <input type="file" (change)="uploadFile($event)">
+    `
+    })
+    export class AppComponent {
+    constructor(private storage: AngularFireStorage) { }
+    uploadFile(event) {
+        const file = event.target.files[0];
+        const filePath = 'name-your-file-path-here';
+        const task = this.storage.upload(filePath, file);
+    }
+    }
+
+
+4- downloading files
+
+    @Component({
+    selector: 'app-root',
+    template: `<img [src]="profileUrl | async" />`
+    })
+    export class AppComponent {
+    profileUrl: Observable<string | null>;
+    constructor(private storage: AngularFireStorage) {
+        const ref = this.storage.ref('users/davideast.jpg');
+        this.profileUrl = ref.getDownloadURL();
+    }
+    }
