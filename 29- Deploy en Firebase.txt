@@ -19,8 +19,7 @@
             -"En este paso se escoge la opicion de hosting"
             - Seleccionamos el proyecto de firebase en el que estamos trabajando
             - Luego nos preguntara que queremos usar como directorio publico , en este caso escribimos 
-              "dist" esta en la carpeta con el proyecto construido para produccion
-            
+              "dist/[nameProject]" esta en la carpeta con el proyecto construido para produccion                
 
 
        $ firebase deploy   "Este subira el proyecto a nuestro Hosting"
