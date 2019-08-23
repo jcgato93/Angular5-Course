@@ -66,7 +66,7 @@ la siguiente seria la estructura basica de un Pipe
             import { Pipe, PipeTransform } from '@angular/core';
 
             @Pipe({
-            name: 'linkifystrng' //nombre del pipi con el que sera invocado
+            name: 'linkifystrng' //nombre del pipe con el que sera invocado
             })
             export class LinkifystrngPipe implements PipeTransform {
 
